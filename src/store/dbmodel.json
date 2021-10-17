@@ -1,0 +1,34 @@
+{
+  "users": {
+    "user1": {
+      "name": "Ada Lovelace",
+      "email": "Ada Lovelace",
+
+    },
+    "user2": {  },
+    "user3": {  }
+  },
+  "rides": {
+    "ride1": {
+      "userid": "user1",
+      "name": "Ada Lovelace",
+      "datum": "Ada Lovelace",
+
+    },
+    "ride2": {  },
+    "ride3": {  }
+  },
+  "rideData": {
+    "rideData1": {
+      "rideid": "ride1",
+      "lat": "Ada Lovelace",
+      "lan": "Ada Lovelace",
+      "speed": "Ada Lovelace",
+      "timestamp": "Ada Lovelace",
+
+    },
+    "rideData2": {  },
+    "rideData3": {  }
+  }
+}
+
