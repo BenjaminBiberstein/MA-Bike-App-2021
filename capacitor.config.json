@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Bike-App_2021",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

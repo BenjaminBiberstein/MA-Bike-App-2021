@@ -1,0 +1,7 @@
+{
+  "name": "Bike-App_2021",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
