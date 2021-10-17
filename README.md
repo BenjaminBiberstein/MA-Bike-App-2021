@@ -8,4 +8,8 @@ Then if one wants to run the app in the browser one has to run "yarn" in the com
 If one wants to open it up in Android Studio one can run the comand "ionic cap open android". After every is loaded one can run the app and test it on the emulator. 
 
 Yarn: https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable
+
 Android Studio: https://developer.android.com/studio?gclsrc=ds&gclsrc=ds&gclid=CISgn7zSz_MCFUcTGwod72cHLw
+
+
+Google Maps API key: https://developers.google.com/maps/documentation/javascript/get-api-key
