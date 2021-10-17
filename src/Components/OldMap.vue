@@ -20,7 +20,7 @@ import {Geolocation} from '@capacitor/geolocation';
 
 import {Loader} from '@googlemaps/js-api-loader'
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyBQWi6VXyI4smVbay15PAO9p--YGBIg4_s'
+const GOOGLE_MAPS_API_KEY = YOUR API KEY
 
 import {useStore} from 'vuex'
 import {  useRoute } from 'vue-router'
