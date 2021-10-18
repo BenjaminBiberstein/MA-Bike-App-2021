@@ -6,14 +6,7 @@ import { getFirestore, collection,  } from "firebase/firestore"
 
 
  // Your web app's Firebase configuration
- var firebaseConfig = {
-    apiKey: "AIzaSyBmmzkxDdFNCnsEk-0LaD7g_iI3UDPeHL0",
-    authDomain: "bike-app-2021.firebaseapp.com",
-    projectId: "bike-app-2021",
-    storageBucket: "bike-app-2021.appspot.com",
-    messagingSenderId: "460887948922",
-    appId: "1:460887948922:web:1eac63aa165939432cc5c3"
-  };
+ var firebaseConfig = YOURFIREBASECONFIG;
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
