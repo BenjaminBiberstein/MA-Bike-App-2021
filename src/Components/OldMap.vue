@@ -108,12 +108,17 @@ export default {
     //filling rideCoordinates array
     //I do not end @ -0 because the last coordinate is lat:0, lng:0 because of a bug.
     const fillCoordinatesArray = () => {
-      for (let i = 0; i < rideData.value.length -1; i++) {
-        let tempCoords = {
+      for (let i = 0; i < rideData.value.length ; i++) {
+        if(rideData.value[i].lat == 0) {
+          i++
+        } else {
+          let tempCoords = {
           lat: rideData.value[i].lat,
           lng: rideData.value[i].lng
         }
         rideCoordinates.value.push(tempCoords)
+        }
+        
       }
 
     }
