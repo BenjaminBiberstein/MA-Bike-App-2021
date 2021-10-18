@@ -152,6 +152,7 @@ export default {
         
         //initializes the ride
         const startRide = ()=> {
+        //Checks for coordinates lat:0 lng:0
             if(loc.value.lat > 0) {
                store.dispatch('startRide', loc.value)
             } 
