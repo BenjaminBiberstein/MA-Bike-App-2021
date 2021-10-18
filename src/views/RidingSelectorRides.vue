@@ -197,9 +197,6 @@ export default {
                     let calculatedDistance = this.distance(lat1, lat2, lon1, lon2);
                     
                     tempDistance = tempDistance + calculatedDistance
-                    
-                
-                
             }
             this.totalDistance = tempDistance.toFixed(3);
         },
@@ -207,11 +204,7 @@ export default {
         // JavaScript program to calculate Distance Between
         // Two Points on Earth from https://www.geeksforgeeks.org/program-distance-two-points-earth/#:~:text=For%20this%20divide%20the%20values,is%20the%20radius%20of%20Earth.
         distance(lat1, lat2, lon1, lon2) {
-            if(lat1 == 0) {
-                
-                return 
-            } else {
-                console.log(lat1)
+
             // The math module contains a function
             // named toRadians which converts from
             // degrees to radians.
@@ -235,7 +228,7 @@ export default {
             console.log(lat1)
             // calculate the result
             return(c * r);
-            }
+            
             
         }
     }

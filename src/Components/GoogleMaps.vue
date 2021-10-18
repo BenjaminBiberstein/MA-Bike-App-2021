@@ -150,7 +150,9 @@ export default {
         
         //initializes the ride
         const startRide = ()=> {
-            store.dispatch('startRide', loc.value)
+            if(loc.value.lat > 0) {
+               store.dispatch('startRide', loc.value)
+            } 
         }
 
         
@@ -188,7 +190,7 @@ export default {
             if (seconds < 10) {seconds = "0"+seconds;}
             return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
         }
-        
+        //Gets ride data form Vuex
         const rideData = computed(() => store.getters.getRideDataRides)
         const rideDistance = ref('0.000')
         //I do not start @ 0 because of a bug that makes the first coordinate start @ lat:0, lng:0
