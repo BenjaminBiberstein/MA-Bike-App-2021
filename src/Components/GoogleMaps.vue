@@ -25,7 +25,9 @@ import {ref, onMounted, computed, } from 'vue';
 import { Geolocation } from '@capacitor/geolocation';
 
 import {Loader} from '@googlemaps/js-api-loader'
-const GOOGLE_MAPS_API_KEY = YOUR API KEY
+
+const GOOGLE_MAPS_API_KEY = YOURAPIKEY
+
 
 import { useStore } from 'vuex'
 
@@ -74,14 +76,11 @@ export default {
                 //Getting position
                 getCurrentPosition()
 
-
                 if(userRiding.value) {
                 //Calling function that creates firebase docs
                 startRide()
                 //calculates ridden distance when ridign
                 calculateDistance()
-                //Start timer
-                startTimer.value = true;
                 //Centering Map view
                 myMap.value.setCenter(loc.value);
                 }
@@ -153,7 +152,9 @@ export default {
         
         //initializes the ride
         const startRide = ()=> {
-            store.dispatch('startRide', loc.value)
+            if(loc.value.lat > 0) {
+               store.dispatch('startRide', loc.value)
+            } 
         }
 
         
@@ -162,15 +163,14 @@ export default {
             store.dispatch('endRide')
             rideDistance.value = 0;
         }
-        //cheks if timer should start
-        const startTimer = ref(false)
         // Initialize time data
         const time = ref('00:00:00');
         //Need tempTime to store the 
         const tempTime = ref(0)
         // add 1 to time if user is riding else = 0
         setInterval(() => {
-            if(startTimer.value) {
+            //checks if user is riding
+            if(userRiding.value) {
                 tempTime.value = tempTime.value + 1
                 time.value = tempTime.value
                 time.value = convertHMS(time.value)
@@ -192,20 +192,25 @@ export default {
             if (seconds < 10) {seconds = "0"+seconds;}
             return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
         }
-        
+        //Gets ride data form Vuex
         const rideData = computed(() => store.getters.getRideDataRides)
         const rideDistance = ref('0.000')
         //I do not start @ 0 because of a bug that makes the first coordinate start @ lat:0, lng:0
         const calculateDistance = () => {
             let tempDistance = 0;
-            for(let i = 1; i < rideData.value.length - 1; i++) {
+            for(let i = 1; i < rideData.value.length -1; i++) {
+                if(rideData.value[i].lat == 0) {
+                    i++
+                    return
+                }else {
                 let lat1 = rideData.value[i].lat;
                 let lon1 = rideData.value[i].lng;
                 i++
                 let lat2 = rideData.value[i].lat;  
                 let lon2 = rideData.value[i].lng;
                 i--
-                tempDistance = tempDistance + distance(lat1, lat2, lon1, lon2);
+                tempDistance = tempDistance + distance(lat1, lat2, lon1, lon2);  
+                }  
             }
             rideDistance.value = tempDistance.toFixed(3);
         }

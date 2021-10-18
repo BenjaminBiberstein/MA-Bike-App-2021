@@ -142,7 +142,7 @@ export default {
         },
         //I do not end -1 because of a bug that makes the last timestamp wrong
         calculateTime() {
-            this.timeInSeconds = (this.getRideDataRides[0].timestamp - this.getRideDataRides[this.getRideDataRides.length - 2].timestamp) / 1000;
+            this.timeInSeconds = (this.getRideDataRides[0].timestamp - this.getRideDataRides[this.getRideDataRides.length - 1].timestamp) / 1000;
             this.yourneyTime = this.convertHMS(this.timeInSeconds)
         },
         //Code from https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+hours+minutes+seconds+javascript
@@ -186,14 +186,17 @@ export default {
         //I do not end -1 because of a bug that makes the last coordinate starts @ lat:0, lng:0
         calculateTraveledDistance() {
             let tempDistance = 0;
-            for(let i = 0; i < this.getRideDataRides.length - 2; i++) {
-                let lat1 = this.getRideDataRides[i].lat;
-                let lon1 = this.getRideDataRides[i].lng;
-                i++
-                let lat2 = this.getRideDataRides[i].lat;  
-                let lon2 = this.getRideDataRides[i].lng;
-                i--
-                tempDistance = tempDistance + this.distance(lat1, lat2, lon1, lon2);
+            for(let i = 0; i < this.getRideDataRides.length -1; i++) {
+                    console.log(this.getRideDataRides[i])
+                    let lat1 = this.getRideDataRides[i].lat;
+                    let lon1 = this.getRideDataRides[i].lng;
+                    i++
+                    let lat2 = this.getRideDataRides[i].lat;  
+                    let lon2 = this.getRideDataRides[i].lng;
+                    i--
+                    let calculatedDistance = this.distance(lat1, lat2, lon1, lon2);
+                    
+                    tempDistance = tempDistance + calculatedDistance
             }
             this.totalDistance = tempDistance.toFixed(3);
         },
@@ -201,6 +204,7 @@ export default {
         // JavaScript program to calculate Distance Between
         // Two Points on Earth from https://www.geeksforgeeks.org/program-distance-two-points-earth/#:~:text=For%20this%20divide%20the%20values,is%20the%20radius%20of%20Earth.
         distance(lat1, lat2, lon1, lon2) {
+
             // The math module contains a function
             // named toRadians which converts from
             // degrees to radians.
@@ -221,9 +225,11 @@ export default {
             // Radius of earth in kilometers. Use 3956
             // for miles
             let r = 6371;
-    
+            console.log(lat1)
             // calculate the result
             return(c * r);
+            
+            
         }
     }
 }

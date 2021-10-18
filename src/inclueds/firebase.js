@@ -6,7 +6,8 @@ import { getFirestore, collection,  } from "firebase/firestore"
 
 
  // Your web app's Firebase configuration
- var firebaseConfig = Your Firebase Configuration;
+ var firebaseConfig = YOURFIREBASECONFIG;
+
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
