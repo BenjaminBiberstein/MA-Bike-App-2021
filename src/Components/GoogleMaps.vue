@@ -195,10 +195,10 @@ export default {
         
         const rideData = computed(() => store.getters.getRideDataRides)
         const rideDistance = ref('0.000')
-
+        //I do not start @ 0 because of a bug that makes the first coordinate start @ lat:0, lng:0
         const calculateDistance = () => {
             let tempDistance = 0;
-            for(let i = 0; i < rideData.value.length - 1; i++) {
+            for(let i = 1; i < rideData.value.length - 1; i++) {
                 let lat1 = rideData.value[i].lat;
                 let lon1 = rideData.value[i].lng;
                 i++

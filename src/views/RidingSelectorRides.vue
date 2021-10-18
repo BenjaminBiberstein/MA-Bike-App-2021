@@ -140,8 +140,9 @@ export default {
                 this.BMR = ((9.99 * this.getUser.weight) + (6.25 * this.getUser.height) - (4.92 * this.getUser.age) -161).toFixed();
             }
         },
+        //I do not end -1 because of a bug that makes the last timestamp wrong
         calculateTime() {
-            this.timeInSeconds = (this.getRideDataRides[0].timestamp - this.getRideDataRides[this.getRideDataRides.length - 1].timestamp) / 1000;
+            this.timeInSeconds = (this.getRideDataRides[0].timestamp - this.getRideDataRides[this.getRideDataRides.length - 2].timestamp) / 1000;
             this.yourneyTime = this.convertHMS(this.timeInSeconds)
         },
         //Code from https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+hours+minutes+seconds+javascript
@@ -182,9 +183,10 @@ export default {
         calculateCaloriesBurend() {
             this.calories = ((this.MET * this.getUser.weight * 3.5 / 200) * (this.timeInSeconds / 60)).toFixed()
         },
+        //I do not end -1 because of a bug that makes the last coordinate starts @ lat:0, lng:0
         calculateTraveledDistance() {
             let tempDistance = 0;
-            for(let i = 0; i < this.getRideDataRides.length - 1; i++) {
+            for(let i = 0; i < this.getRideDataRides.length - 2; i++) {
                 let lat1 = this.getRideDataRides[i].lat;
                 let lon1 = this.getRideDataRides[i].lng;
                 i++
