@@ -25,7 +25,9 @@ import {ref, onMounted, computed, } from 'vue';
 import { Geolocation } from '@capacitor/geolocation';
 
 import {Loader} from '@googlemaps/js-api-loader'
+
 const GOOGLE_MAPS_API_KEY = YOURAPIKEY
+
 
 import { useStore } from 'vuex'
 
